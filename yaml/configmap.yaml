@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-skel-configmap
+  namespace: backend-skel
+data:
+  # plain text
+  # IMAGE_SEARCH_GOOGLE__SEARCH_TYPE: "image"
+  SAMPLE__CONFIG: "sample-config"

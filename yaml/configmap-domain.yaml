@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-skel-server-configmap
+  namespace: backend-skel
+data:
+  # related urls
+  # REDIS__HOST: "localhost" > in kubenetes REDIS__HOST: "redis.backend-skel.svc.cluster.local"
+  SAMPLE__URL: "localhost"

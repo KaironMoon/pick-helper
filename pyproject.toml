@@ -1,0 +1,12 @@
+[project]
+name = "backend-skel"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ai-microservice",
+]
+
+[tool.uv.sources]
+ai-microservice = { git = "http://gitlab.deephigh.ai:8929/deephigh/framework/ai_microservice_v2.git" }
