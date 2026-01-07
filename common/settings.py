@@ -18,14 +18,24 @@ class SampleSetting(Setting):
     secret: str = Field(default="sample-secret")
     url: str = Field(default="localhost")
 
+class DBSetting(Setting):
+    name: str = Field(default="pickhelper_db")
+    port: str = Field(default="5432")
+    host: str = Field(default="localhost")
+    user: str = Field(default="admin")
+    password: str = Field(default="admin")
+
 class InnerSettings(DotEnvSettings):
     sample: SampleSetting = Field(default_factory=SampleSetting)
+    db: DBSetting = Field(default_factory=DBSetting)
 
 class ProjectSettings(WebAppSettings):
     sample: SampleSetting = Field(default_factory=SampleSetting)
+    db: DBSetting = Field(default_factory=DBSetting)
+
     def __init__(self):
         super().__init__()
-        
+
         # 설정 객체 생성
         config_settings = InnerSettings(_yaml_file="yaml/configmap.yaml")
         secret_settings = InnerSettings(_yaml_file="yaml/secret.yaml")
@@ -33,9 +43,14 @@ class ProjectSettings(WebAppSettings):
 
         # 설정 값 복사 및 디코딩
         self.sample = config_settings.sample
-
         self.sample.secret = _maybe_decode(secret_settings.sample.secret)
         self.sample.url = config_domain_settings.sample.url
+
+        # DB 설정
+        self.db = config_settings.db
+        self.db.host = config_domain_settings.db.host
+        self.db.user = _maybe_decode(secret_settings.db.user)
+        self.db.password = _maybe_decode(secret_settings.db.password)
 
 # base64 디코딩이 필요한지 자동으로 처리하는 헬퍼 함수
 def _maybe_decode(value: str) -> str:

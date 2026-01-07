@@ -7,3 +7,5 @@ data:
   # plain text
   # IMAGE_SEARCH_GOOGLE__SEARCH_TYPE: "image"
   SAMPLE__CONFIG: "sample-config"
+  DB__NAME: "pickhelper_db"
+  DB__PORT: "5432"

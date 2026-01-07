@@ -7,3 +7,4 @@ data:
   # related urls
   # REDIS__HOST: "localhost" > in kubenetes REDIS__HOST: "redis.backend-skel.svc.cluster.local"
   SAMPLE__URL: "localhost"
+  DB__HOST: "localhost"
