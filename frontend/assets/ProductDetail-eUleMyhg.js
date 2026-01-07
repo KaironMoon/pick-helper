@@ -1,0 +1,1 @@
+import{j as t}from"./index-XYHktKdw.js";import{P as r}from"./ProductTitle-C3cx5KYZ.js";function i(){return t.jsx("div",{children:"Product Detail 에만 사용되는 컴포넌트"})}function n(){return t.jsxs("div",{children:[t.jsx(r,{}),t.jsx(i,{})]})}export{n as default};
